@@ -1,8 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('league1_table', {
+    const LeagueOne = sequelize.define('LeagueOne', {
         team: {
             type: DataTypes.STRING,
             allowNull: false,
         }
     });
+    return LeagueOne;
 }
