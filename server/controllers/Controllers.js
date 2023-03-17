@@ -15,4 +15,20 @@ const getUsers = async (req, res) => {
     res.json(result);
 }
 
-module.exports = { getTableInfo, createUser, getUsers }
+const validateLogin = async (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    const result = await Users.findAll({
+        where: {
+            username: username,
+            password: password,
+        }
+    })
+    // console.log(result);
+    // if(result.length === 0) {
+    //     throw new CouldNotFindEntityForUsernameAndPassword("Invalid login!");
+    // }
+    res.json(result);
+}
+
+module.exports = { getTableInfo, createUser, getUsers, validateLogin }
