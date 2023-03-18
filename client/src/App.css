@@ -178,9 +178,14 @@ li {
 }
 
 .text-section-break {
-    margin-top: 15px;
+    margin-top: 50px;
 }
 
 .form-group {
     width: 20%;
+}
+
+.custom-container {
+    padding: 0 250px;
+    text-align: center;
 }
