@@ -6,6 +6,7 @@ import '../App.css';
 function Home() {
 
     const [backendData, setBackendData] = useState([{}])
+    const username = localStorage.getItem("user");
     // const [user, setUser] = useState({})
 
     // const getBackendData = () => {
@@ -34,11 +35,12 @@ function Home() {
                 <>
                     <Navbar bg="primary" variant="dark">
                         <Container>
-                            <Navbar.Brand href="#home">Welcome Lewis</Navbar.Brand>
+                            <Navbar.Brand href="/home">Welcome, {username}</Navbar.Brand>
                             <Nav className="me-auto">
-                                <Nav.Link href="#home">Home</Nav.Link>
+                                <Nav.Link href="/home">Home</Nav.Link>
                                 <Nav.Link href="#features">Predictions</Nav.Link>
                                 <Nav.Link href="#pricing">Pricing</Nav.Link>
+                                <Nav.Link href="/login">Log Out</Nav.Link>
                             </Nav>
                         </Container>
                     </Navbar>

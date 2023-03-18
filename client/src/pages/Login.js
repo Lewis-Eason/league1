@@ -1,4 +1,5 @@
-import {Form, Button, Row, Col, Container, Alert} from "react-bootstrap";
+import {Form, Button, Row, Col, Container} from "react-bootstrap";
+import { Alert } from "react-native";
 import '../App.css';
 import Axios from "axios";
 import {useNavigate} from "react-router-dom";
@@ -9,25 +10,22 @@ function Login() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
 
-    const login = () => {
+    const login = async (e) => {
+        e.preventDefault();
         Axios.post("/validateLogin", {
             username: username,
             password: password,
         }).then((response) => {
             console.log(response.data.length);
             if (response.data.length > 0) {
+                localStorage.setItem("user", username);
                 navigate('/home');
             } else {
-                alert("invalid login");
+                setErrorMsg("Invalid login");
             }
         })
-        // }).catch((error) => {
-        //
-        //     console.log("YAY!!!")
-        //     throw(error);
-            // <Alert>Invalid login</Alert>
-        // });
     }
 
     return (
@@ -37,6 +35,7 @@ function Login() {
                 <Row className="mt-5">
                     <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
                         <Form onSubmit={login}>
+                            <p className="error">{errorMsg}</p>
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="text" placeholder="Username" id="username" name="username" onChange={(event) => {
