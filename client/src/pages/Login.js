@@ -1,9 +1,8 @@
 import {Form, Button, Row, Col, Container} from "react-bootstrap";
-import { Alert } from "react-native";
 import '../App.css';
 import Axios from "axios";
 import {useNavigate} from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Login() {
 
@@ -27,6 +26,10 @@ function Login() {
             }
         })
     }
+
+    useEffect(() => {
+        localStorage.clear();
+    }, [])
 
     return (
         <>

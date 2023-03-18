@@ -7,7 +7,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json()
 
 router.get("/api", getTableInfo)
-router.post("/register", createUser)
+router.post("/register", jsonParser, createUser)
 router.get("/users", getUsers)
 router.post("/validateLogin", jsonParser, validateLogin)
 

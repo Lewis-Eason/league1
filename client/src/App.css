@@ -25,9 +25,9 @@
 }
 
 .error{
-    color: red;
-    margin: 10px 0 0 10px;
-    display: inline-block
+    color: firebrick;
+    font-weight: bold;
+    margin-top: 0.5rem;
 }
 
 .balance{

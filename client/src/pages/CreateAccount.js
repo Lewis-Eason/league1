@@ -10,18 +10,20 @@ function CreateAccount() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
 
-    const login = () => {
-        Axios.post("/validateLogin", {
+    const createAccount = async (e) => {
+        e.preventDefault();
+        if(password !== confirmPassword) {
+            setErrorMsg("Passwords do not match");
+            return;
+        }
+        Axios.post("/register", {
             username: username,
             password: password,
-        }).then((response) => {
-            console.log(response.data.length);
-            if (response.data.length > 0) {
-                navigate('/home');
-            } else {
-                alert("invalid login");
-            }
+        }).then(() => {
+            localStorage.setItem("user", username);
+            navigate('/home');
         })
     }
 
@@ -31,7 +33,8 @@ function CreateAccount() {
                 <h1 className="shadow-sm text-success mt-5 p-3 text-center rounded">Create Account</h1>
                 <Row className="mt-5">
                     <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
-                        <Form onSubmit={login}>
+                        <Form onSubmit={createAccount}>
+                            <p className="error">{errorMsg}</p>
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="text" placeholder="Username" id="username" name="username" onChange={(event) => {
