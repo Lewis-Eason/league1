@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import Axios from "axios";
-import {Table} from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {Container, Nav, Navbar, Table} from "react-bootstrap";
 import '../App.css';
 
 function Home() {
 
     const [backendData, setBackendData] = useState([{}])
+    // const [user, setUser] = useState({})
 
     // const getBackendData = () => {
     //     Axios.get("/api")
@@ -22,11 +22,29 @@ function Home() {
             })
     }, [])
 
+    // useEffect(() => {
+    //     Axios.get("/user").then(
+    //         response => {
+    //             setUser(response.data)
+    //         })
+    // }, [])
+
             return (
-                <div>
-                    <div className="title">
-                        League 1 table
-                    </div>
+                <div className="App">
+                <>
+                    <Navbar bg="primary" variant="dark">
+                        <Container>
+                            <Navbar.Brand href="#home">Welcome Lewis</Navbar.Brand>
+                            <Nav className="me-auto">
+                                <Nav.Link href="#home">Home</Nav.Link>
+                                <Nav.Link href="#features">Predictions</Nav.Link>
+                                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                            </Nav>
+                        </Container>
+                    </Navbar>
+                <div className="title">
+                    League 1 table
+                </div>
                     <div className="custom-container text-section-break">
                         <Table className="table table-bordered text-center table-responsive">
                             <thead>
@@ -44,7 +62,7 @@ function Home() {
                             </thead>
                             <tbody>
                             {
-                                backendData.map((value) => (
+                                backendData.map((value, key) => (
                                     <tr>
                                         <td>{value.id}</td>
                                         <td>{value.team}</td>
@@ -61,10 +79,9 @@ function Home() {
                             </tbody>
                         </Table>
                     </div>
+                </>
                 </div>
             );
-        // })
-    // }
 }
 
 export default Home;

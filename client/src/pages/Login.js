@@ -1,8 +1,7 @@
 import {Form, Button, Row, Col, Container, Alert} from "react-bootstrap";
 import '../App.css';
 import Axios from "axios";
-import {Navigate, useNavigate} from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {useNavigate} from "react-router-dom";
 import { useState } from "react";
 
 function Login() {
@@ -54,8 +53,7 @@ function Login() {
 
                             <Button variant="success btn-block" type="submit" className="text-section-break">Login</Button>
                             <p className="text-section-break"><a href="#">Forgot your password?</a></p>
-                            <p className="text-section-break">Not a member? <a href="#">Click here</a> to create an
-                                account.</p>
+                            <p className="text-section-break">Not a member? <a href="/account">Click here</a> to create an account.</p>
                         </Form>
                     </Col>
                 </Row>
