@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Axios from "axios";
-import {Container, Nav, Navbar, Table} from "react-bootstrap";
+import {Table} from "react-bootstrap";
 import '../App.css';
 
 function Home() {
 
     const [backendData, setBackendData] = useState([{}])
-    const username = localStorage.getItem("user");
     // const [user, setUser] = useState({})
 
     // const getBackendData = () => {
@@ -31,19 +30,7 @@ function Home() {
     // }, [])
 
             return (
-                <div className="App">
                 <>
-                    <Navbar bg="primary" variant="dark">
-                        <Container>
-                            <Navbar.Brand href="/home">Welcome, {username}</Navbar.Brand>
-                            <Nav className="me-auto">
-                                <Nav.Link href="/home">Home</Nav.Link>
-                                <Nav.Link href="#features">Predictions</Nav.Link>
-                                <Nav.Link href="#pricing">Pricing</Nav.Link>
-                                <Nav.Link href="/login">Log Out</Nav.Link>
-                            </Nav>
-                        </Container>
-                    </Navbar>
                 <div className="title">
                     League 1 table
                 </div>
@@ -82,7 +69,6 @@ function Home() {
                         </Table>
                     </div>
                 </>
-                </div>
             );
 }
 
