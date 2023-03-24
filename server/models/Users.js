@@ -18,5 +18,10 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false
         }
         );
+
+    Users.associate = models => {
+        Users.belongsToMany(models.Fixtures, {through: models.Predictions})
+    };
+
     return Users;
 }
