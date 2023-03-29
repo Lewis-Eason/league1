@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const Users = sequelize.define('Users', {
-        id: {
+    const Users = sequelize.define('users', {
+        user_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -15,12 +15,14 @@ module.exports = (sequelize, DataTypes) => {
         }
         },
         {
-            timestamps: false
+            timestamps: false,
+            // Prevent sequelize making table names plural by default
+            freezeTableName: true,
         }
         );
 
     Users.associate = models => {
-        Users.belongsToMany(models.Fixtures, {through: models.Predictions})
+        Users.belongsToMany(models.fixtures, {through: models.predictions})
     };
 
     return Users;

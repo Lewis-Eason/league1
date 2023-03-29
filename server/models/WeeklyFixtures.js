@@ -1,14 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-    const Predictions = sequelize.define('predictions', {
-            prediction_id: {
+    const WeeklyFixtures = sequelize.define('weekly_fixtures', {
+            week_id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
             },
-            prediction: {
-                type: DataTypes.STRING,
+            week: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
-            }
+            },
         },
         {
             timestamps: false,
@@ -17,5 +17,5 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
-    return Predictions;
+    return WeeklyFixtures;
 }

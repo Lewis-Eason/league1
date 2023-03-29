@@ -13,6 +13,8 @@ function Login() {
 
     const login = async (e) => {
         e.preventDefault();
+        const elements = e.target.elements;
+        console.log(elements);
         Axios.post("/validateLogin", {
             username: username,
             password: password,
