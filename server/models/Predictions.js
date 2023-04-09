@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Predictions = sequelize.define('predictions', {
+    const Predictions = sequelize.define('Predictions', {
             prediction_id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false,
             // Prevent sequelize making table names plural by default
             freezeTableName: true,
+            tableName: 'predictions'
         }
     );
 

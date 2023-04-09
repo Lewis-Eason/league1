@@ -37,10 +37,6 @@ CREATE TABLE if not exists weekly_fixtures (
                                               week INTEGER NOT NULL
 );
 
-ALTER TABLE if EXISTS predictions ADD FOREIGN KEY (fixture_id) REFERENCES fixtures(fixture_id);
-ALTER TABLE if EXISTS predictions ADD FOREIGN KEY (user_id) REFERENCES users(user_id);
-ALTER TABLE if EXISTS fixtures ADD FOREIGN KEY (week_id) REFERENCES weekly_fixtures(week_id);
-
 insert into league_one_table (team, matches_played, wins, draws, losses, "for", against, goal_difference, points)
 values ('Plymouth Argyle', 0, 0, 0, 0, 0, 0, 0, 0);
 

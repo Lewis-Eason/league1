@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const LeagueOne = sequelize.define('league_one_table', {
+    const LeagueOne = sequelize.define('LeagueOne', {
         league_one_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -46,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false,
             // Prevent sequelize making table names plural by default
             freezeTableName: true,
+            tableName: 'league_one_table'
         }
         );
     return LeagueOne;

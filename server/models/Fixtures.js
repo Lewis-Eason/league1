@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Fixtures = sequelize.define('fixtures', {
+    const Fixtures = sequelize.define('Fixtures', {
             fixture_id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
@@ -22,12 +22,13 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false,
             // Prevent sequelize making table names plural by default
             freezeTableName: true,
+            tableName: 'fixtures'
         }
     );
 
     Fixtures.associate = models => {
-        Fixtures.belongsToMany(models.users, {through: models.predictions})
-        Fixtures.belongsTo(models.weekly_fixtures, {
+        Fixtures.belongsToMany(models.Users, {through: models.Predictions})
+        Fixtures.belongsTo(models.WeeklyFixtures, {
             foreignKey: {
                 allowNull: false
             }

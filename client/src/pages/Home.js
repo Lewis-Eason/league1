@@ -6,14 +6,6 @@ import '../App.css';
 function Home() {
 
     const [backendData, setBackendData] = useState([{}])
-    // const [user, setUser] = useState({})
-
-    // const getBackendData = () => {
-    //     Axios.get("/api")
-    //         .then(response => {
-    //             setBackendData(response.data)
-    //         })
-    // }
 
     useEffect(() => {
         Axios.get("/api").then(
@@ -22,54 +14,47 @@ function Home() {
             })
     }, [])
 
-    // useEffect(() => {
-    //     Axios.get("/user").then(
-    //         response => {
-    //             setUser(response.data)
-    //         })
-    // }, [])
-
-            return (
-                <>
-                <div className="title">
-                    League 1 table
-                </div>
-                    <div className="custom-container text-section-break">
-                        <Table className="table table-bordered text-center table-responsive">
-                            <thead>
+    return (
+        <>
+        <div className="title">
+            League 1 table
+        </div>
+            <div className="custom-container text-section-break">
+                <Table className="table table-bordered text-center table-responsive">
+                    <thead>
+                    <tr>
+                        <th className="text-center">Position</th>
+                        <th className="text-center">Club</th>
+                        <th className="text-center">MP</th>
+                        <th className="text-center">Wins</th>
+                        <th className="text-center">Draws</th>
+                        <th className="text-center">Losses</th>
+                        <th className="text-center">GF</th>
+                        <th className="text-center">GA</th>
+                        <th className="text-center">Points</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        backendData.map((value, key) => (
                             <tr>
-                                <th className="text-center">Position</th>
-                                <th className="text-center">Club</th>
-                                <th className="text-center">MP</th>
-                                <th className="text-center">Wins</th>
-                                <th className="text-center">Draws</th>
-                                <th className="text-center">Losses</th>
-                                <th className="text-center">GF</th>
-                                <th className="text-center">GA</th>
-                                <th className="text-center">Points</th>
+                                <td>{key + 1}</td>
+                                <td key={`team_${key}`}>{value.team}</td>
+                                <td key={`matches_${key}`}>{value.matches_played}</td>
+                                <td key={`wins_${key}`}>{value.wins}</td>
+                                <td key={`draws_${key}`}>{value.draws}</td>
+                                <td key={`losses_${key}`}>{value.losses}</td>
+                                <td key={`for_${key}`}>{value.for}</td>
+                                <td key={`against_${key}`}>{value.against}</td>
+                                <td key={`points_${key}`}>{value.points}</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            {
-                                backendData.map((value, key) => (
-                                    <tr>
-                                        <td>{value.id}</td>
-                                        <td>{value.team}</td>
-                                        <td>{value.matches_played}</td>
-                                        <td>{value.wins}</td>
-                                        <td>{value.draws}</td>
-                                        <td>{value.losses}</td>
-                                        <td>{value.for}</td>
-                                        <td>{value.against}</td>
-                                        <td>{value.points}</td>
-                                    </tr>
-                                ))
-                            }
-                            </tbody>
-                        </Table>
-                    </div>
-                </>
-            );
+                        ))
+                    }
+                    </tbody>
+                </Table>
+            </div>
+        </>
+    );
 }
 
 export default Home;
