@@ -8,7 +8,7 @@ function Home() {
     const [backendData, setBackendData] = useState([{}])
 
     useEffect(() => {
-        Axios.get("/api").then(
+        Axios.get("/leagueOneData").then(
             response => {
                 setBackendData(response.data)
             })
@@ -37,7 +37,7 @@ function Home() {
                     <tbody>
                     {
                         backendData.map((value, key) => (
-                            <tr>
+                            <tr key={key}>
                                 <td>{key + 1}</td>
                                 <td key={`team_${key}`}>{value.team}</td>
                                 <td key={`matches_${key}`}>{value.matches_played}</td>

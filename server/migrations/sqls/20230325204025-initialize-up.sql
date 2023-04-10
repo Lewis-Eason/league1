@@ -42,3 +42,15 @@ values ('Plymouth Argyle', 0, 0, 0, 0, 0, 0, 0, 0);
 
 insert into league_one_table (team, matches_played, wins, draws, losses, "for", against, goal_difference, points)
 values ('Derby', 0, 0, 0, 0, 0, 0, 0, 0);
+
+insert into weekly_fixtures (week) values (1);
+insert into weekly_fixtures (week) values (2);
+insert into weekly_fixtures (week) values (3);
+insert into weekly_fixtures (week) values (4);
+
+INSERT INTO fixtures (home_team, away_team, "result", "WeeklyFixtureWeekId")
+VALUES ('Derby', 'Portsmouth', '', (SELECT week_id FROM weekly_fixtures where "week" = '1')),
+       ('Charlton', 'Shrewsberry', '', (SELECT week_id FROM weekly_fixtures where "week" = '1')),
+       ('Lincoln', 'Oxford', '', (SELECT week_id FROM weekly_fixtures where "week" = '1')),
+       ('Port Vale', 'Fleetwood', '', (SELECT week_id FROM weekly_fixtures where "week" = '1'));
+

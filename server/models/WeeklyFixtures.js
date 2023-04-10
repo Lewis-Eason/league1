@@ -18,5 +18,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
+    WeeklyFixtures.associate = models => {
+        WeeklyFixtures.hasMany(models.Fixtures);
+    }
+
     return WeeklyFixtures;
 }

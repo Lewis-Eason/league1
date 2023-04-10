@@ -189,3 +189,9 @@ li {
     padding: 0 250px;
     text-align: center;
 }
+
+.child {
+    display: inline-block;
+    margin-right:10px;
+    text-align: center;
+}

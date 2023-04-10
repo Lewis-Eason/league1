@@ -1,4 +1,4 @@
-const { LeagueOne, Users } = require('../models')
+const { LeagueOne, Users, WeeklyFixtures, Fixtures } = require('../models')
 
 const getTableInfo = async (req, res) => {
     const result = await LeagueOne.findAll();
@@ -24,11 +24,17 @@ const validateLogin = async (req, res) => {
             password: password,
         }
     })
-    // console.log(result);
-    // if(result.length === 0) {
-    //     throw new CouldNotFindEntityForUsernameAndPassword("Invalid login!");
-    // }
     res.json(result);
 }
 
-module.exports = { getTableInfo, createUser, getUsers, validateLogin }
+const getFixtures = async (req, res) => {
+    const id = req.params.id;
+    const result = await WeeklyFixtures.findByPk(id, {
+        include: [{
+            model: Fixtures
+        }]
+    });
+    res.json(result);
+}
+
+module.exports = { getTableInfo, createUser, getUsers, validateLogin, getFixtures }
