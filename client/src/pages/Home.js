@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Axios from "axios";
 import {Table} from "react-bootstrap";
 import '../App.css';
+import NavBar from "../components/NavBar";
 
 function Home() {
 
@@ -14,11 +15,14 @@ function Home() {
             })
     }, [])
 
+    if (backendData === undefined) return "Loading table. Please wait..."
+
     return (
         <>
-        <div className="title">
-            League 1 table
-        </div>
+            <NavBar />
+            <div className="title">
+                League 1 table
+            </div>
             <div className="custom-container text-section-break">
                 <Table className="table table-bordered text-center table-responsive">
                     <thead>

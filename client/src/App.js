@@ -9,7 +9,6 @@ function App() {
 
     return (
         <>
-        <NavBar />
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/account" element={<CreateAccount />} />
