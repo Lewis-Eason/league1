@@ -13,13 +13,10 @@ function Login() {
 
     const login = async (e) => {
         e.preventDefault();
-        const elements = e.target.elements;
-        console.log(elements);
         Axios.post("/validateLogin", {
             username: username,
             password: password,
         }).then((response) => {
-            console.log(response.data.length);
             if (response.data.length > 0) {
                 localStorage.setItem("user", username);
                 navigate('/home');

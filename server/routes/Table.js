@@ -1,6 +1,6 @@
 const express = require("express");
 
-const {getTableInfo, createUser, getUsers, validateLogin, getFixtures} = require("../controllers/Controllers.js");
+const {getTableInfo, createUser, getUsers, validateLogin, getFixtures, updatePredictions} = require("../controllers/Controllers.js");
 const bodyParser = require("body-parser");
 
 const router = express.Router();
@@ -11,5 +11,6 @@ router.post("/register", jsonParser, createUser)
 router.get("/users", getUsers)
 router.post("/validateLogin", jsonParser, validateLogin)
 router.get("/weeklyFixtures/:id", getFixtures)
+router.put("/predictions/:username/:id", jsonParser, updatePredictions)
 
 module.exports = router

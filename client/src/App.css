@@ -29,6 +29,12 @@
     margin-top: 0.5rem;
 }
 
+.success{
+    color: green;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
 .balance{
     color: #5F9EA0;
 }
